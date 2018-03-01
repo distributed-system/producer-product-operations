@@ -16,7 +16,12 @@ import Koa from 'koa'
 */
 export async function findProducts(ctx) {
   const { channel, queueName } = ctx.amqp
-  ctx.body = await sendMessage(JSON.stringify({ a: 1 }), queueName, channel)
+  ctx.body = await sendMessage(JSON.stringify({ 
+    name: 'Product x',
+    description: 'Description x',
+    sku: 'asd123a',
+    created_at: new Date() 
+  }), queueName, channel)
 }
 
 export default new Router({ prefix: '/product:s?' })
